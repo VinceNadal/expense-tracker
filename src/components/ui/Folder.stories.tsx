@@ -20,16 +20,44 @@ export const Default: Story = {
     items: [
       {
         id: "1",
-        name: "Item 1",
+        children: "Item 1",
       },
       {
         id: "2",
-        name: "Item 2",
+        children: "Item 2",
       },
       {
         id: "3",
-        name: "Item 3",
+        children: "Item 3",
       },
     ],
   },
+};
+
+export const MultipleFolder: Story = {
+  args: {
+    name: "Multiple",
+    items: [
+      {
+        id: "1",
+        children: "Item 1",
+      },
+      {
+        id: "2",
+        children: "Item 2",
+      },
+      {
+        id: "3",
+        children: "Item 3",
+      },
+    ],
+  },
+  decorators: [
+    (Story) => (
+      <div>
+        <Story />
+        <Story />
+      </div>
+    ),
+  ],
 };

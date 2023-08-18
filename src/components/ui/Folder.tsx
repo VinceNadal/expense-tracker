@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactNode } from "react";
 import { MoveDown } from "lucide-react";
 import {
   Collapsible,
@@ -6,41 +6,34 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/Collapsible";
 import { Button } from "@/components/ui/Button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Accordion";
 
 type FolderItem = {
-  id: string,
-  name: string
-}
+  id: string;
+  children: React.ReactNode
+};
 
 type FolderProps = {
   name: string;
-  items: FolderItem[];
+  items: FolderItem[],
 };
 
 export const Folder = ({ name, items }: FolderProps) => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      className="w-[350px] space-y-2 rounded-md border"
-    >
-      <div className=" flex items-center justify-between space-x-4 px-4">
-        <h4 className="text-sm font-semibold">{name}</h4>
-        <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="sm" className="w-9 p-0">
-            <MoveDown className="h-4 w-4" />
-            <span className="sr-only">Toggle</span>
-          </Button>
-        </CollapsibleTrigger>
-      </div>
-      <CollapsibleContent className="space-y-2">
+    <Accordion type="multiple" className="w-[350px] space-y-2 rounded-md justify-between border flex items-center space-x-4 px-4" >
+      <AccordionItem value={name} className="w-full">
+        <AccordionTrigger>{name}</AccordionTrigger>
         {items.map((item) => (
-          <div className="rounded-md border px-4 py-3 font-mono text-sm" key={item.id}>
-            {item.name}
-          </div>
+          <AccordionContent key={item.id} className="px-4 py-3 font-mono text-sm">
+            {item.children}
+          </AccordionContent>
         ))}
-      </CollapsibleContent>
-    </Collapsible>
+      </AccordionItem>
+    </Accordion>
   );
 };
