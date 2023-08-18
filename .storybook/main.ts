@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs";
-import path from 'path'
+import path from "path";
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
@@ -11,7 +11,7 @@ const config: StorybookConfig = {
       name: "@storybook/addon-styling",
       options: {},
     },
-    'storybook-tailwind-dark-mode'
+    "storybook-tailwind-dark-mode",
   ],
   framework: {
     name: "@storybook/nextjs",
@@ -27,10 +27,10 @@ const config: StorybookConfig = {
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
-          '@': path.resolve(__dirname, "../src/")
-        }
-      }
-    }
-  }
+          "@": path.resolve(__dirname, "../src/"),
+        },
+      },
+    };
+  },
 };
 export default config;
