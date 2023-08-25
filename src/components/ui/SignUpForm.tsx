@@ -40,11 +40,16 @@ export const SignUpForm = ({
       }}
       className={cn("flex flex-col gap-4 w-[320px] sm:w-[480px]", className)}
     >
+      <section className="flex justify-center items-center p-2">
+        <h3 className="text-3xl">Sign Up</h3>
+      </section>
       <section className="flex flex-col gap-2">
         <label>Username: </label>
         <input
           {...register("username", { required: true })}
-          className={`border rounded p-2 bg-gray-50 focus:outl focus:ring focus:ring-blue-300 focus:outline-none ${errors.username ? "focus:ring-destructive" : ""}`}
+          className={`border rounded p-2 bg-gray-50 focus:outl focus:ring focus:ring-blue-300 focus:outline-none ${
+            errors.username ? "focus:ring-destructive" : ""
+          }`}
           placeholder="Username"
         />
         {errors.username && (
@@ -57,7 +62,9 @@ export const SignUpForm = ({
         <input
           type="email"
           {...register("email", { required: true })}
-          className={`border rounded p-2 bg-gray-50 focus:outl focus:ring focus:ring-blue-300 focus:outline-none ${errors.email ? "focus:ring-destructive" : ""}`}
+          className={`border rounded p-2 bg-gray-50 focus:outl focus:ring focus:ring-blue-300 focus:outline-none ${
+            errors.email ? "focus:ring-destructive" : ""
+          }`}
           placeholder="Email"
         />
         {errors.email && <p className="text-red-600">Email is required</p>}
@@ -65,7 +72,13 @@ export const SignUpForm = ({
 
       <section className="flex flex-col gap-2">
         <label>Password: </label>
-        <div className={`flex flex-1 bg-gray-50 border rounded justify-between focus-within:ring ${errors.password ? "focus-within:ring-destructive" : "focus-within:ring-blue-300"}`}>
+        <div
+          className={`flex flex-1 bg-gray-50 border rounded justify-between focus-within:ring ${
+            errors.password
+              ? "focus-within:ring-destructive"
+              : "focus-within:ring-blue-300"
+          }`}
+        >
           <input
             type={isPasswordVisible ? "text" : "password"}
             {...register("password", { required: true, minLength: 8 })}
